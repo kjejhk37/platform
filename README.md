@@ -27,6 +27,12 @@
 ## 개발 환경
 
 - 언어: C++
-- 빌드 시스템: 상위 프로젝트의 CMake 빌드에 편입되어 빌드됩니다(단독 빌드 스크립트 없음).
+- 빌드 시스템: 상위 프로젝트의 CMake 빌드에 편입되어 빌드됩니다. 이와 별개로 `platform/CMakeLists.txt`가 `platform_lib`를 자체적으로 정의해, platform 레포만 단독으로도 빌드·검증할 수 있습니다.
+
+## 테스트
+
+- `platform`은 Google Test 기반의 자체 검증용 단위 테스트를 갖고 있습니다(10개 영역 전체, 247개 케이스).
+- `PLATFORM_BUILD_TESTS` 옵션(기본 `OFF`)으로 켜면 `platform_tests` 타겟이 빌드됩니다 — platform 레포 자체 검증용이며, 상위(소비) 프로젝트가 이 빌드를 켤 의무는 없습니다.
+- 빌드/실행 방법과 신규 기능 추가 시 테스트 작성 규칙은 [`docs/testing_방법_단위테스트_도입_20260811.md`](./docs/testing_방법_단위테스트_도입_20260811.md)를 참고하세요.
 
 협업 방식과 워크플로우는 [`agent_harness/CLAUDE.md`](./agent_harness/CLAUDE.md)를 따릅니다.
